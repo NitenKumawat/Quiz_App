@@ -24,7 +24,7 @@ const attemptElement = document.getElementById("Attempt");
 const correctElement = document.getElementById("correct");
 const wrongElement = document.getElementById("wrong");
 const percentageElement = document.getElementById("percentage");
-
+const categoryTitleElement = document.getElementById("category-title");
 // Variables
 let userName = "";
 let currentCategoryQuestions = [];
@@ -56,6 +56,8 @@ categoryButtons.forEach(button => {
 
         homePage.classList.add("hidden");
         selectedCategory = button.textContent; // Store selected category
+        // Set category title element to show selected category
+        categoryTitleElement.textContent = `${selectedCategory}`;
         currentCategoryQuestions = questionsByCategory[selectedCategory];
         currentQuestionIndex = 0;
         score = 0;

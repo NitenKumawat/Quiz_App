@@ -180,9 +180,11 @@ hr {
     
 }
 .header h3 {
-    color: #706f6f;
-    font-weight: lighter;
-    margin: 20px;
+    color: #00a0d1;
+    font-weight: bold;
+    font-size: 24px;
+    margin:20px;
+    padding-bottom: 50px;
 }
 .header .time-score{
     position: relative;
