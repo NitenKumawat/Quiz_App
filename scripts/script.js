@@ -35,6 +35,9 @@ let timer = 10;
 let interval;
 let selectedCategory = ""; // Variable to store selected category
 
+let startTime, endTime; // Variables to store start and end time
+
+
 // Event listener for Enter button on home page
 enterBtn.addEventListener("click", () => {
     userName = usernameInput.value;
@@ -63,6 +66,9 @@ categoryButtons.forEach(button => {
         score = 0;
         attempt = 0; // Reset attempt count for new quiz
         timer = 10;
+
+        // Set the start time of the quiz
+        startTime = new Date();
 
         // Load the first question
         quizPage.classList.remove("hidden");
@@ -149,9 +155,14 @@ function endQuiz() {
     quizPage.classList.add("hidden");
     resultPage.classList.remove("hidden");
 
+    // Set the end time and calculate the total time taken
+    endTime = new Date();
+    const totalTimeTaken = Math.floor((endTime - startTime) / 1000); // Total time in seconds
+
+
     // Calculate and display results
     totalScoreElement.textContent = score;
-    totalTimeElement.textContent = currentCategoryQuestions.length * 10; // Assuming each question had a 10-second timer
+    totalTimeElement.textContent = `${totalTimeTaken}`; // Show total time taken
     totalQuestionsElement.textContent = currentCategoryQuestions.length;
     attemptElement.textContent = attempt; // Display the correct number of attempts
     correctElement.textContent = score;
@@ -166,6 +177,9 @@ startAgainBtn.addEventListener("click", () => {
     score = 0;
     attempt = 0; // Reset attempt count
     timer = 10;
+    
+      // Set a new start time for the restarted quiz
+      startTime = new Date();
 
     // Load the first question of the selected category
     resultPage.classList.add("hidden");
